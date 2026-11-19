@@ -14,7 +14,7 @@
 //   5. página que rola para o lado (390, 820 e 1024 px);
 //   6. mais de um botão principal visível na mesma tela (DEC-048), fora da página de componentes;
 //   7. dia da semana escrito à mão no HTML, ou diferente da data em data-data (DEC-048);
-//   8. palavra proibida (docs/pesquisa/regulacao.md, seção 8, no boora-sistema).
+//   8. palavra proibida (regulacao.md, seção 8, e voz.md, no boora-sistema): também culpa e gênero para a pessoa.
 //
 // A fonte da regra fica aqui, no boora. O boora-sistema guarda uma cópia em scripts/ (DEC-039).
 // Fica de fora: prototipo/direcoes/ (o registro da etapa 1, com as três direções, inclusive as que não foram escolhidas).
@@ -138,7 +138,11 @@ const PROIBIDAS = [
   [/\b(emagre[cç]a|seque)\s+\d+/i, 'promessa de resultado'],
   [/\bgarantid[oa]s?\b|\bgarante\b/i, '"garantido" (promessa)'],
   [/antes\s+e\s+depois/i, '"antes e depois"'],
-  [/\bcorpo dos sonhos\b|\bbarriga\b|\bgordurinha/i, 'fala do corpo como defeito'],
+  [/\bcorpo dos sonhos\b|\bbarriga\b|\bgordurinha|\bpneuzinho|projeto ver[aã]o/i, 'fala do corpo como defeito'],
+  // Da voz (boora-sistema, docs/design/voz.md, DEC-049):
+  [/\bpersonal\b/i, '"personal" (a IA é a Dani)'],
+  [/voc[eê] (falhou|furou)|perdeu a sequ[eê]ncia|quebrou a sequ[eê]ncia|treino perdido/i, 'culpa ("você falhou", "perdeu a sequência")'],
+  [/\bbem-vind[oa]s?\b|\b\p{L}+\((a|as|o|os)\)/iu, 'gênero para a pessoa ("bem-vindo", "cansado(a)"): escreva sem gênero'],
 ];
 const DIAS = /\b(segunda|terça|terca|quarta|quinta|sexta|sábado|sabado|domingo)(-feira)?,\s*\d/i;
 function textoVisivel(html) {
