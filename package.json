@@ -1,0 +1,11 @@
+{
+  "name": "boora-site",
+  "private": true,
+  "description": "Site e protótipo do Boora. Só o necessário para conferir o design.",
+  "scripts": {
+    "verificar": "node scripts/verificar_design.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

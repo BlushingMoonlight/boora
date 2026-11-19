@@ -1,0 +1,250 @@
+/*
+  Boora — componentes (direção A, DEC-040). Só usa var(--...) de tokens.css.
+  Cada componente tem os estados: normal, tocado (:active), desligado ([disabled] ou aria-disabled),
+  erro (.campo--erro, aviso de erro), carregando (aria-busy) e vazio (.vazio).
+  Regra da tela: um só .botao--principal visível por tela (DEC-048).
+*/
+
+/* ---------- Base ---------- */
+html { -webkit-text-size-adjust: 100%; font-size: 100%; }
+@supports (font: -apple-system-body) { html { font: -apple-system-body; } } /* tamanho de texto do sistema (iOS) */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+  font-size: var(--texto-corpo);
+  line-height: var(--altura-linha);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: var(--peso-titulo); line-height: var(--altura-linha-titulo); margin: 0; }
+h1 { font-size: var(--titulo-1); }
+h2 { font-size: var(--titulo-2); }
+h3 { font-size: var(--titulo-3); }
+p { margin: 0; }
+:focus-visible { outline: var(--borda-foco) solid var(--cor-foco); outline-offset: var(--borda); }
+.num { font-variant-numeric: tabular-nums; font-weight: var(--peso-forte); }
+.texto-2 { color: var(--cor-texto-2); }
+.so-leitor { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.icone { width: var(--icone); height: var(--icone); flex: none; fill: currentColor; }
+.icone--pequeno { width: var(--icone-pequeno); height: var(--icone-pequeno); }
+
+/* ---------- Tela: área segura, largura e a barra de baixo ---------- */
+.tela {
+  min-height: 100dvh;
+  padding-top: max(var(--esp-4), var(--seguro-topo));
+  padding-left: max(var(--margem-tela), var(--seguro-esquerda));
+  padding-right: max(var(--margem-tela), var(--seguro-direita));
+  padding-bottom: calc(var(--alvo-principal) + var(--esp-8) + var(--seguro-baixo));
+}
+.tela__conteudo { max-width: var(--largura-conteudo); margin: 0 auto; display: flex; flex-direction: column; gap: var(--esp-4); }
+
+/* Cabeçalho: onde estou, "‹ Voltar" fora do primeiro nível, e a conversa com a Dani a 1 toque */
+.cabecalho { display: flex; align-items: center; gap: var(--esp-2); min-height: var(--alvo-min); }
+.cabecalho__titulo { flex: 1; font-family: var(--fonte-titulo); font-weight: var(--peso-titulo); font-size: var(--titulo-3); }
+.dia { display: block; color: var(--cor-texto-2); font-size: var(--texto-pequeno); }
+.saudacao { font-family: var(--fonte-titulo); font-weight: var(--peso-titulo); font-size: var(--titulo-1); line-height: var(--altura-linha-titulo); }
+.voltar {
+  display: inline-flex; align-items: center; gap: var(--esp-1); min-height: var(--alvo-min); min-width: var(--alvo-min);
+  padding: 0 var(--esp-2) 0 0; color: var(--cor-destaque); text-decoration: none; font-weight: var(--peso-forte);
+  background: none; border: 0; font: inherit; cursor: pointer;
+}
+.botao-dani {
+  margin-left: auto; width: var(--alvo-min); height: var(--alvo-min); border-radius: var(--raio-circulo); border: 0;
+  display: grid; place-items: center; background: var(--cor-destaque-suave); color: var(--cor-sobre-destaque-suave); cursor: pointer;
+}
+.botao-dani:active, .botao-dani.tocado { background: var(--cor-superficie-2); }
+
+/* ---------- Botões ---------- */
+.botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--esp-2);
+  min-height: var(--alvo-min); min-width: var(--alvo-min); padding: 0 var(--esp-4);
+  border: 0; border-radius: var(--raio-pilula); font: inherit; font-weight: var(--peso-forte); font-size: var(--texto-corpo);
+  text-decoration: none; cursor: pointer; transition: background-color var(--tempo-rapido) var(--curva), transform var(--tempo-rapido) var(--curva);
+  -webkit-tap-highlight-color: transparent;
+}
+.botao:active, .botao.tocado { transform: scale(0.98); }
+/* A ação principal da tela: só uma por tela (DEC-048) */
+.botao--principal { background: var(--cor-destaque); color: var(--cor-sobre-destaque); min-height: var(--alvo-principal); font-size: var(--texto-grande); }
+.botao--principal:active, .botao--principal.tocado { background: var(--cor-sobre-destaque-suave); }
+/* Ação de uma proposta ou de um bloco ("Aplicar"): peso abaixo do principal */
+.botao--suave { background: var(--cor-destaque-suave); color: var(--cor-sobre-destaque-suave); box-shadow: inset 0 0 0 var(--borda) var(--cor-destaque); }
+.botao--suave:active, .botao--suave.tocado { background: var(--cor-superficie-2); }
+.botao--contorno { background: transparent; color: var(--cor-texto); box-shadow: inset 0 0 0 var(--borda) var(--cor-linha-forte); }
+.botao--contorno:active, .botao--contorno.tocado { background: var(--cor-superficie-2); }
+/* "Agora não", "Desfazer": o mais leve */
+.botao--texto { background: transparent; color: var(--cor-destaque); padding: 0 var(--esp-3); }
+.botao--texto:active, .botao--texto.tocado { background: var(--cor-destaque-suave); }
+/* Só para o que apaga (excluir conta), sempre no fim e separado */
+.botao--perigo { background: transparent; color: var(--cor-erro); box-shadow: inset 0 0 0 var(--borda) var(--cor-erro); }
+.botao--perigo:active, .botao--perigo.tocado { background: var(--cor-erro-suave); }
+.botao--largo { width: 100%; }
+.botao[disabled], .botao[aria-disabled="true"] {
+  background: var(--cor-superficie-2); color: var(--cor-texto-2); box-shadow: inset 0 0 0 var(--borda) var(--cor-linha); cursor: not-allowed; transform: none;
+}
+.botao[aria-busy="true"] { cursor: progress; }
+.botao[aria-busy="true"] .icone { animation: girar var(--tempo-lento) linear infinite; animation-duration: calc(var(--tempo-lento) * 3); }
+@keyframes girar { to { transform: rotate(360deg); } }
+
+/* A ação principal fica fixa embaixo, acima da barra das seções */
+.acao-fixa {
+  position: fixed; left: 0; right: 0;
+  bottom: calc(var(--alvo-principal) + var(--esp-2) + var(--seguro-baixo));
+  padding: var(--esp-2) max(var(--margem-tela), var(--seguro-direita)) var(--esp-2) max(var(--margem-tela), var(--seguro-esquerda));
+  background: var(--cor-fundo);
+}
+.acao-fixa > .botao { width: 100%; max-width: var(--largura-conteudo); display: flex; margin: 0 auto; }
+
+/* ---------- Blocos ---------- */
+.bloco { background: var(--cor-superficie); border-radius: var(--raio); padding: var(--esp-4); display: flex; flex-direction: column; gap: var(--esp-2); }
+.bloco__titulo { font-weight: var(--peso-forte); }
+.rotulo {
+  display: inline-flex; align-items: center; gap: var(--esp-1); font-size: var(--texto-legenda); font-weight: var(--peso-forte);
+  letter-spacing: var(--espaco-letra-rotulo); text-transform: uppercase; color: var(--cor-sobre-destaque-suave);
+}
+.acoes { display: flex; flex-wrap: wrap; gap: var(--esp-2); justify-content: flex-end; }
+
+/* Proposta da Dani: "Aplicar" (suave) e "Agora não" (texto) */
+.proposta { background: var(--cor-destaque-suave); }
+.proposta__texto { font-family: var(--fonte-titulo); font-weight: var(--peso-titulo); font-size: var(--texto-grande); }
+.proposta__porque { color: var(--cor-texto-2); font-size: var(--texto-pequeno); }
+
+/* Mensagem da Dani */
+.dani { display: flex; flex-direction: column; gap: var(--esp-1); }
+.dani__nome { font-size: var(--texto-pequeno); font-weight: var(--peso-forte); color: var(--cor-texto-2); }
+.dani__fala { font-size: var(--texto-grande); }
+.balao { max-width: 85%; padding: var(--esp-3) var(--esp-4); border-radius: var(--raio-grande); background: var(--cor-superficie); }
+.balao--pessoa { margin-left: auto; background: var(--cor-destaque); color: var(--cor-sobre-destaque); }
+
+/* ---------- Avisos: sempre com ícone e palavra, nunca só cor ---------- */
+.aviso {
+  display: flex; gap: var(--esp-3); align-items: flex-start; padding: var(--esp-4); border-radius: var(--raio);
+  background: var(--cor-superficie); box-shadow: inset 0 0 0 var(--borda) var(--cor-linha);
+}
+.aviso__corpo { flex: 1; display: flex; flex-direction: column; gap: var(--esp-1); }
+.aviso__titulo { font-weight: var(--peso-forte); }
+.aviso--risco { background: var(--cor-erro-suave); box-shadow: inset 0 0 0 var(--borda) var(--cor-erro); }
+.aviso--risco .icone, .aviso--risco .aviso__titulo { color: var(--cor-erro); }
+.aviso--atencao { background: var(--cor-atencao-suave); box-shadow: inset 0 0 0 var(--borda) var(--cor-atencao); }
+.aviso--atencao .icone, .aviso--atencao .aviso__titulo { color: var(--cor-atencao); }
+.aviso--bom { background: var(--cor-bom-suave); box-shadow: inset 0 0 0 var(--borda) var(--cor-bom); }
+.aviso--bom .icone, .aviso--bom .aviso__titulo { color: var(--cor-bom); }
+
+/* Mensagem rápida depois de uma ação: "Registrado. Desfazer" */
+.recado {
+  display: flex; align-items: center; gap: var(--esp-3); padding: var(--esp-2) var(--esp-2) var(--esp-2) var(--esp-4);
+  border-radius: var(--raio); background: var(--cor-texto); color: var(--cor-fundo); box-shadow: var(--sombra-flutuante);
+}
+.recado .botao--texto { color: var(--cor-fundo); }
+
+/* ---------- Números e progresso (com o número sempre ao lado: a cor não fala sozinha) ---------- */
+.medidas { display: grid; grid-template-columns: 1fr 1fr; gap: var(--esp-4); }
+.medida { display: flex; flex-direction: column; gap: var(--esp-1); }
+.medida__nome { font-size: var(--texto-pequeno); color: var(--cor-texto-2); }
+.medida__valor { font-size: var(--texto-pequeno); color: var(--cor-texto-2); }
+.medida__valor .num { font-size: var(--numero-grande); line-height: var(--altura-linha-titulo); color: var(--cor-texto); }
+.progresso { height: var(--barra-progresso); border-radius: var(--raio-pilula); background: var(--cor-superficie-2); overflow: hidden; }
+.progresso__feito { display: block; height: 100%; border-radius: var(--raio-pilula); background: var(--cor-destaque); }
+.aprox { border: 0; background: none; padding: 0; font: inherit; color: inherit; cursor: pointer; min-height: var(--alvo-min);
+  display: inline-flex; align-items: center; gap: var(--esp-1); }
+.aprox__faixa { font-size: var(--texto-pequeno); color: var(--cor-texto-2); }
+
+/* ---------- Listas e linhas ---------- */
+.lista { background: var(--cor-superficie); border-radius: var(--raio); overflow: hidden; }
+.linha {
+  display: flex; align-items: center; gap: var(--esp-3); min-height: calc(var(--alvo-min) + var(--esp-3));
+  padding: var(--esp-2) var(--esp-4); color: inherit; text-decoration: none; width: 100%;
+  background: none; border: 0; font: inherit; text-align: left; cursor: pointer;
+}
+.linha + .linha { box-shadow: inset 0 var(--borda) 0 0 var(--cor-linha); }
+.linha:active, .linha.tocado { background: var(--cor-superficie-2); }
+.linha__icone { color: var(--cor-destaque); }
+.linha__texto { flex: 1; display: flex; flex-direction: column; }
+.linha__titulo { font-weight: var(--peso-forte); }
+.linha__sub { font-size: var(--texto-pequeno); color: var(--cor-texto-2); }
+.linha__fim { color: var(--cor-texto-2); }
+.linha[aria-disabled="true"] { color: var(--cor-texto-2); cursor: not-allowed; }
+
+/* ---------- Formulário: uma coluna, rótulo em cima, erro com ícone e palavra ---------- */
+.campo { display: flex; flex-direction: column; gap: var(--esp-1); }
+.campo__rotulo { font-weight: var(--peso-forte); }
+.campo__ajuda { font-size: var(--texto-pequeno); color: var(--cor-texto-2); }
+.campo__entrada {
+  min-height: var(--alvo-principal); padding: 0 var(--esp-4); border-radius: var(--raio-pequeno);
+  border: var(--borda) solid var(--cor-linha-forte); background: var(--cor-superficie); color: var(--cor-texto);
+  font: inherit; font-size: var(--texto-corpo); /* 16 px ou mais: o iPhone não dá zoom no campo */
+}
+.campo__entrada::placeholder { color: var(--cor-texto-2); }
+.campo__entrada:disabled { background: var(--cor-superficie-2); color: var(--cor-texto-2); }
+.campo__erro { display: none; align-items: center; gap: var(--esp-1); color: var(--cor-erro); font-size: var(--texto-pequeno); font-weight: var(--peso-forte); }
+.campo--erro .campo__entrada { border-color: var(--cor-erro); box-shadow: inset 0 0 0 var(--borda) var(--cor-erro); }
+.campo--erro .campo__erro { display: flex; }
+
+/* Escolha: cada opção é uma linha inteira de toque */
+.opcoes { display: flex; flex-direction: column; gap: var(--esp-2); border: 0; padding: 0; margin: 0; }
+.opcao {
+  display: flex; align-items: center; gap: var(--esp-3); min-height: var(--alvo-principal); padding: 0 var(--esp-4);
+  border-radius: var(--raio); background: var(--cor-superficie); box-shadow: inset 0 0 0 var(--borda) var(--cor-linha); cursor: pointer;
+}
+.opcao input { width: var(--icone-pequeno); height: var(--icone-pequeno); accent-color: var(--cor-destaque); margin: 0; }
+.opcao:has(input:checked) { background: var(--cor-destaque-suave); box-shadow: inset 0 0 0 var(--borda-foco) var(--cor-destaque); }
+.opcao:has(input:disabled) { color: var(--cor-texto-2); cursor: not-allowed; }
+
+/* Interruptor (liga e salva na hora) */
+.interruptor { display: flex; align-items: center; justify-content: space-between; gap: var(--esp-3); min-height: var(--alvo-principal); cursor: pointer; }
+.interruptor input {
+  appearance: none; -webkit-appearance: none; margin: 0; flex: none; position: relative;
+  width: var(--interruptor-largura); height: var(--interruptor-altura); border-radius: var(--raio-pilula);
+  background: var(--cor-linha-forte); transition: background-color var(--tempo) var(--curva); cursor: pointer;
+}
+.interruptor input::after {
+  content: ""; position: absolute; top: calc((var(--interruptor-altura) - var(--interruptor-bolinha)) / 2); left: calc((var(--interruptor-altura) - var(--interruptor-bolinha)) / 2);
+  width: var(--interruptor-bolinha); height: var(--interruptor-bolinha); border-radius: var(--raio-circulo); background: var(--cor-superficie);
+  transition: transform var(--tempo) var(--curva);
+}
+.interruptor input:checked { background: var(--cor-destaque); }
+.interruptor input:checked::after { transform: translateX(calc(var(--interruptor-largura) - var(--interruptor-altura))); }
+.interruptor input:disabled { background: var(--cor-superficie-2); cursor: not-allowed; }
+
+/* ---------- Vazio, carregando e erro de tela ---------- */
+.vazio, .falhou { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--esp-2); padding: var(--esp-7) var(--esp-4); color: var(--cor-texto-2); }
+.vazio .icone, .falhou .icone { width: var(--alvo-min); height: var(--alvo-min); }
+.vazio__titulo, .falhou__titulo { color: var(--cor-texto); font-weight: var(--peso-forte); font-size: var(--texto-grande); }
+.falhou .icone { color: var(--cor-erro); }
+.esqueleto { border-radius: var(--raio-pequeno); background: var(--cor-esqueleto); min-height: var(--esp-4);
+  background-image: linear-gradient(90deg, var(--cor-esqueleto), var(--cor-esqueleto-brilho), var(--cor-esqueleto)); background-size: 200% 100%;
+  animation: brilho calc(var(--tempo-lento) * 5) linear infinite; }
+@keyframes brilho { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+@media (prefers-reduced-motion: reduce) { .esqueleto, .botao[aria-busy="true"] .icone { animation: none; } }
+
+/* ---------- Folha de confirmação (nível 2: diz o que acontece) ---------- */
+.veu { position: fixed; inset: 0; background: var(--cor-veu); display: flex; align-items: flex-end; justify-content: center; }
+.folha {
+  width: 100%; max-width: var(--largura-conteudo); background: var(--cor-superficie); border-radius: var(--raio-grande) var(--raio-grande) 0 0;
+  padding: var(--esp-6) var(--esp-4) calc(var(--esp-4) + var(--seguro-baixo)); display: flex; flex-direction: column; gap: var(--esp-3);
+  box-shadow: var(--sombra-flutuante);
+}
+.folha--solta { position: static; border-radius: var(--raio-grande); } /* só na página de componentes */
+
+/* ---------- Barra das seções (celular e iPad em pé) e trilho lateral (iPad deitado) ---------- */
+.secoes {
+  position: fixed; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr);
+  padding: 0 var(--seguro-direita) var(--seguro-baixo) var(--seguro-esquerda);
+  background: var(--cor-superficie); box-shadow: inset 0 var(--borda) 0 0 var(--cor-linha);
+}
+.secoes a {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--esp-1);
+  min-height: var(--alvo-principal); color: var(--cor-texto-2); text-decoration: none; font-size: var(--texto-legenda);
+}
+.secoes a .icone--cheio { display: none; }
+.secoes a[aria-current="page"] { color: var(--cor-destaque); font-weight: var(--peso-forte); }
+.secoes a[aria-current="page"] .icone--vazio { display: none; }
+.secoes a[aria-current="page"] .icone--cheio { display: block; }
+.secoes--solta { position: static; } /* só na página de componentes */
+@media (min-width: 1024px) and (orientation: landscape) {
+  .secoes:not(.secoes--solta) { top: 0; right: auto; width: calc(var(--alvo-principal) * 2); grid-template-columns: 1fr; align-content: start;
+    padding-top: var(--esp-6); box-shadow: inset calc(var(--borda) * -1) 0 0 0 var(--cor-linha); }
+  .tela:has(.secoes:not(.secoes--solta)) { padding-left: calc(var(--alvo-principal) * 2 + var(--esp-6)); padding-bottom: var(--esp-8); }
+}

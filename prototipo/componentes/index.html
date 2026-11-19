@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR" data-pagina="componentes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>Boora — componentes</title>
+<link rel="icon" href="../../assets/marca/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/marca/apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/design/tokens.css">
+<link rel="stylesheet" href="../../assets/design/componentes.css">
+<link rel="stylesheet" href="catalogo.css">
+</head>
+<body>
+<main class="catalogo">
+
+  <header class="catalogo__topo">
+    <svg class="catalogo__logo" viewBox="0 0 220 64" role="img" aria-label="Boora">
+      <g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round">
+        <path d="M12 6V58"/><circle cx="30" cy="40" r="18"/><circle cx="74" cy="40" r="18"/>
+        <circle class="o2" cx="118" cy="40" r="18"/><path d="M144 58V40A18 18 0 0 1 162 22"/>
+        <circle cx="190" cy="40" r="18"/><path d="M208 22V58"/>
+      </g>
+    </svg>
+    <h1>Componentes</h1>
+    <p class="texto-2">O sistema de design do Boora (direção A, "Painel calmo"). Cada componente em todos os estados.
+      Só usa os tokens de <code>assets/design/tokens.css</code>. Protótipo: dados inventados.</p>
+    <fieldset class="opcoes tema-escolha">
+      <legend class="estado__nome">Tema (o padrão segue o aparelho)</legend>
+      <label class="opcao"><input type="radio" name="tema" data-escolher-tema="aparelho"> Como o aparelho</label>
+      <label class="opcao"><input type="radio" name="tema" data-escolher-tema="claro"> Claro</label>
+      <label class="opcao"><input type="radio" name="tema" data-escolher-tema="escuro"> Escuro</label>
+    </fieldset>
+  </header>
+
+  <section aria-labelledby="t-cores">
+    <h2 id="t-cores">Cores</h2>
+    <p class="texto-2">O azul é a marca e a ação principal; não é cor de estado. O vermelho é só erro e sinal de risco.</p>
+    <div class="amostras">
+      <div class="amostra"><span class="amostra__cor" style="background: var(--cor-fundo)"></span>Fundo</div>
+      <div class="amostra"><span class="amostra__cor" style="background: var(--cor-superficie)"></span>Superfície</div>
+      <div class="amostra"><span class="amostra__cor" style="background: var(--cor-texto)"></span>Texto</div>
+      <div class="amostra"><span class="amostra__cor" style="background: var(--cor-texto-2)"></span>Texto 2</div>
+      <div class="amostra"><span class="amostra__cor" style="background: var(--cor-destaque)"></span>Destaque (marca)</div>
+      <div class="amostra"><span class="amostra__cor" style="background: var(--cor-bom)"></span>No plano</div>
+      <div class="amostra"><span class="amostra__cor" style="background: var(--cor-atencao)"></span>Atenção</div>
+      <div class="amostra"><span class="amostra__cor" style="background: var(--cor-erro)"></span>Erro e risco</div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-tipo">
+    <h2 id="t-tipo">Texto</h2>
+    <div class="tipos">
+      <p class="saudacao">Boa tarde, Ana</p>
+      <h2>Título 2 · Plus Jakarta Sans</h2>
+      <h3>Título 3 · Plus Jakarta Sans</h3>
+      <p>Corpo · Inter. Acompanha o tamanho de texto escolhido no aparelho.</p>
+      <p class="texto-2">Texto secundário, para o que explica.</p>
+      <p><span class="num">1.850</span> kcal · números com largura fixa</p>
+      <p><span class="dia" data-data="2026-11-19"></span></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-botoes">
+    <h2 id="t-botoes">Botões</h2>
+    <p class="texto-2">Uma ação principal por tela. A ação de uma proposta é "suave"; "Agora não" e "Desfazer" são de texto.</p>
+    <div class="grade">
+      <div class="estado"><span class="estado__nome">Principal</span>
+        <div class="fila"><button class="botao botao--principal" type="button"><svg class="icone"><use href="../../assets/icones/phosphor.svg#i-camera"/></svg>Registrar almoço</button></div></div>
+      <div class="estado"><span class="estado__nome">Principal · tocado</span>
+        <div class="fila"><button class="botao botao--principal tocado" type="button">Registrar almoço</button></div></div>
+      <div class="estado"><span class="estado__nome">Principal · carregando</span>
+        <div class="fila"><button class="botao botao--principal" type="button" aria-busy="true"><svg class="icone"><use href="../../assets/icones/phosphor.svg#i-circle-notch"/></svg>Salvando…</button></div></div>
+      <div class="estado"><span class="estado__nome">Principal · desligado</span>
+        <div class="fila"><button class="botao botao--principal" type="button" disabled>Continuar</button></div></div>
+      <div class="estado"><span class="estado__nome">Suave, texto (proposta)</span>
+        <div class="fila"><button class="botao botao--texto" type="button">Agora não</button><button class="botao botao--suave" type="button">Aplicar</button></div></div>
+      <div class="estado"><span class="estado__nome">Suave · tocado</span>
+        <div class="fila"><button class="botao botao--suave tocado" type="button">Aplicar</button></div></div>
+      <div class="estado"><span class="estado__nome">Contorno</span>
+        <div class="fila"><button class="botao botao--contorno" type="button"><svg class="icone"><use href="../../assets/icones/phosphor.svg#i-plus"/></svg>300 mL</button><button class="botao botao--contorno tocado" type="button">Tocado</button></div></div>
+      <div class="estado"><span class="estado__nome">Perigo (no fim e separado)</span>
+        <div class="fila"><button class="botao botao--perigo" type="button"><svg class="icone"><use href="../../assets/icones/phosphor.svg#i-trash"/></svg>Excluir conta e dados</button></div></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-cab">
+    <h2 id="t-cab">Cabeçalho e Dani</h2>
+    <div class="grade">
+      <div class="estado"><span class="estado__nome">Primeiro nível (Hoje)</span>
+        <div class="cabecalho"><div><span class="dia" data-data="2026-11-19"></span><span class="saudacao">Boa tarde, Ana</span></div>
+          <button class="botao-dani" type="button" aria-label="Falar com a Dani"><svg class="icone"><use href="../../assets/icones/phosphor.svg#i-chat-circle"/></svg></button></div></div>
+      <div class="estado"><span class="estado__nome">Segundo nível, com voltar</span>
+        <div class="cabecalho"><a class="voltar" href="#"><svg class="icone"><use href="../../assets/icones/phosphor.svg#i-caret-left"/></svg>Comida</a>
+          <span class="cabecalho__titulo">Água e sal</span>
+          <button class="botao-dani" type="button" aria-label="Falar com a Dani"><svg class="icone"><use href="../../assets/icones/phosphor.svg#i-chat-circle"/></svg></button></div></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-blocos">
+    <h2 id="t-blocos">Blocos</h2>
+    <div class="grade">
+      <div class="estado"><span class="estado__nome">Proposta da Dani</span>
+        <div class="bloco proposta">
+          <span class="rotulo"><svg class="icone icone--pequeno"><use href="../../assets/icones/phosphor.svg#i-sparkle"/></svg>Proposta</span>
+          <p class="proposta__texto">Subir o agachamento para <span class="num">25 kg</span> hoje?</p>
+          <p class="proposta__porque">Na última vez você fez 3 × 10 com 20 kg e disse que ainda dava mais.</p>
+          <div class="acoes"><button class="botao botao--texto" type="button">Agora não</button><button class="botao botao--suave" type="button">Aplicar</button></div>
+        </div></div>
+      <div class="estado"><span class="estado__nome">Mensagem do dia</span>
+        <div class="dani"><span class="dani__nome">Dani</span><p class="dani__fala">Hoje tem treino A às 18h. No almoço, capricha na proteína: faltam 58 g para a meta.</p></div></div>
+      <div class="estado"><span class="estado__nome">Medidas com progresso</span>
+        <div class="bloco"><div class="medidas">
+          <div class="medida"><span class="medida__nome">Calorias</span><span class="medida__valor"><span class="num">820</span> de <span class="num">1.850</span> kcal</span>
+            <span class="progresso" role="img" aria-label="44% da meta"><span class="progresso__feito" style="width: 44%"></span></span></div>
+          <div class="medida"><span class="medida__nome">Proteína</span><span class="medida__valor"><span class="num">52</span> de <span class="num">110</span> g</span>
+            <span class="progresso" role="img" aria-label="47% da meta"><span class="progresso__feito" style="width: 47%"></span></span></div>
+        </div></div></div>
+      <div class="estado"><span class="estado__nome">Calorias da foto: "~" e a faixa ao tocar</span>
+        <div class="bloco">
+          <button class="aprox" type="button" aria-expanded="false" aria-controls="faixa-1"><span class="num">~650</span> kcal</button>
+          <span class="aprox__faixa" id="faixa-1" hidden>Entre 550 e 750 kcal: a foto não mostra o óleo nem o tamanho exato.</span>
+        </div></div>
+      <div class="estado"><span class="estado__nome">Linhas de lista (normal, tocada, desligada)</span>
+        <div class="lista">
+          <a class="linha" href="#"><svg class="icone linha__icone"><use href="../../assets/icones/phosphor.svg#i-drop"/></svg><span class="linha__texto"><span class="linha__titulo">Água e sal</span><span class="linha__sub"><span class="num">1,1</span> de <span class="num">2,4</span> L</span></span><svg class="icone linha__fim"><use href="../../assets/icones/phosphor.svg#i-caret-right"/></svg></a>
+          <a class="linha tocado" href="#"><svg class="icone linha__icone"><use href="../../assets/icones/phosphor.svg#i-barbell"/></svg><span class="linha__texto"><span class="linha__titulo">Treino A</span><span class="linha__sub">18h · cerca de 55 min</span></span><svg class="icone linha__fim"><use href="../../assets/icones/phosphor.svg#i-caret-right"/></svg></a>
+          <a class="linha" href="#" aria-disabled="true"><svg class="icone linha__icone"><use href="../../assets/icones/phosphor.svg#i-lock"/></svg><span class="linha__texto"><span class="linha__titulo">Integrações</span><span class="linha__sub">Na entrega 5</span></span></a>
+        </div></div>
+      <div class="estado"><span class="estado__nome">Conversa</span>
+        <div class="conversa"><p class="balao">Boa! Registrei o almoço: <span class="num">~650</span> kcal.</p><p class="balao balao--pessoa">Valeu, Dani</p></div></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-avisos">
+    <h2 id="t-avisos">Avisos (sempre com ícone e palavra)</h2>
+    <div class="grade">
+      <div class="aviso aviso--risco" role="alert"><svg class="icone"><use href="../../assets/icones/phosphor.svg#i-first-aid-kit"/></svg>
+        <div class="aviso__corpo"><p class="aviso__titulo">Pare o treino agora</p><p>Se a dor no peito não passar, ligue para o SAMU, 192. (Texto fixo em rascunho.)</p></div></div>
+      <div class="aviso aviso--atencao"><svg class="icone"><use href="../../assets/icones/phosphor.svg#i-warning"/></svg>
+        <div class="aviso__corpo"><p class="aviso__titulo">O pagamento não passou</p><p>Tudo continua funcionando por 7 dias.</p>
+          <div class="acoes"><button class="botao botao--suave" type="button">Pagar agora</button></div></div></div>
+      <div class="aviso aviso--bom"><svg class="icone"><use href="../../assets/icones/phosphor.svg#i-check-circle"/></svg>
+        <div class="aviso__corpo"><p class="aviso__titulo">Assinatura ativa</p><p>Próximo pagamento em <span class="num">19/12</span>.</p></div></div>
+      <div class="recado" role="status"><span>Água registrada: <span class="num">300</span> mL</span><button class="botao botao--texto" type="button">Desfazer</button></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-form">
+    <h2 id="t-form">Formulário</h2>
+    <div class="grade">
+      <div class="campo"><label class="campo__rotulo" for="c1">Como quer ser chamada?</label><input class="campo__entrada" id="c1" value="Ana"></div>
+      <div class="campo"><label class="campo__rotulo" for="c2">Peso</label><span class="campo__ajuda" id="c2a">Em kg. Pode deixar para depois.</span>
+        <input class="campo__entrada" id="c2" inputmode="decimal" placeholder="Ex.: 68,5" aria-describedby="c2a"></div>
+      <div class="campo campo--erro"><label class="campo__rotulo" for="c3">E-mail</label>
+        <input class="campo__entrada" id="c3" value="ana@" aria-invalid="true" aria-describedby="c3e">
+        <span class="campo__erro" id="c3e"><svg class="icone icone--pequeno"><use href="../../assets/icones/phosphor.svg#i-warning-circle"/></svg>Falta o resto do e-mail.</span></div>
+      <div class="campo"><label class="campo__rotulo" for="c4">Data de nascimento</label><input class="campo__entrada" id="c4" value="12/03/1994" disabled></div>
+      <fieldset class="opcoes"><legend class="campo__rotulo">O que você quer agora?</legend>
+        <label class="opcao"><input type="radio" name="obj"> Ser mais saudável</label>
+        <label class="opcao"><input type="radio" name="obj" checked> Ganhar massa</label>
+        <label class="opcao"><input type="radio" name="obj" disabled> Perder gordura (só 18 ou mais)</label></fieldset>
+      <div class="estado"><span class="estado__nome">Interruptor (salva na hora)</span>
+        <label class="interruptor">Bom dia diário<input type="checkbox" role="switch"></label>
+        <label class="interruptor">Lembrete de treino<input type="checkbox" role="switch" checked></label>
+        <label class="interruptor">Integrações (entrega 5)<input type="checkbox" role="switch" disabled></label></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-estados">
+    <h2 id="t-estados">Vazio, carregando e erro</h2>
+    <div class="grade">
+      <div class="bloco vazio"><svg class="icone"><use href="../../assets/icones/phosphor.svg#i-fork-knife"/></svg>
+        <p class="vazio__titulo">Nada registrado hoje</p><p>Uma foto do prato já resolve.</p></div>
+      <div class="bloco" aria-busy="true" aria-label="Carregando"><span class="esqueleto esq-linha"></span><span class="esqueleto"></span><span class="esqueleto esq-bloco"></span></div>
+      <div class="bloco falhou" role="alert"><svg class="icone"><use href="../../assets/icones/phosphor.svg#i-warning-circle"/></svg>
+        <p class="falhou__titulo">Não deu para carregar</p><p>Sem internet agora. O que você registrar fica guardado e sobe depois.</p>
+        <button class="botao botao--contorno" type="button"><svg class="icone"><use href="../../assets/icones/phosphor.svg#i-arrows-clockwise"/></svg>Tentar de novo</button></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-folha">
+    <h2 id="t-folha">Confirmação (nível 2: diz o que acontece)</h2>
+    <div class="folha folha--solta" role="dialog" aria-labelledby="f1">
+      <h3 id="f1">Cancelar a assinatura?</h3>
+      <p>Vale até <span class="num">19/12/2026</span>. Depois, a conta fica pausada, e os dados ficam guardados por 90 dias.</p>
+      <div class="acoes"><button class="botao botao--texto" type="button">Voltar</button><button class="botao botao--perigo" type="button">Cancelar assinatura</button></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-secoes">
+    <h2 id="t-secoes">Seções</h2>
+    <p class="texto-2">Embaixo no celular e no iPad em pé; ao lado no iPad deitado. A seção atual tem o ícone cheio e o nome em destaque.</p>
+    <nav class="secoes secoes--solta" aria-label="Seções">
+      <a href="#" aria-current="page"><svg class="icone icone--vazio"><use href="../../assets/icones/phosphor.svg#i-house"/></svg><svg class="icone icone--cheio"><use href="../../assets/icones/phosphor.svg#i-house-cheio"/></svg>Hoje</a>
+      <a href="#"><svg class="icone icone--vazio"><use href="../../assets/icones/phosphor.svg#i-fork-knife"/></svg><svg class="icone icone--cheio"><use href="../../assets/icones/phosphor.svg#i-fork-knife-cheio"/></svg>Comida</a>
+      <a href="#"><svg class="icone icone--vazio"><use href="../../assets/icones/phosphor.svg#i-barbell"/></svg><svg class="icone icone--cheio"><use href="../../assets/icones/phosphor.svg#i-barbell-cheio"/></svg>Treino</a>
+      <a href="#"><svg class="icone icone--vazio"><use href="../../assets/icones/phosphor.svg#i-chart-line-up"/></svg><svg class="icone icone--cheio"><use href="../../assets/icones/phosphor.svg#i-chart-line-up-cheio"/></svg>Evolução</a>
+      <a href="#"><svg class="icone icone--vazio"><use href="../../assets/icones/phosphor.svg#i-user-circle"/></svg><svg class="icone icone--cheio"><use href="../../assets/icones/phosphor.svg#i-user-circle-cheio"/></svg>Você</a>
+    </nav>
+  </section>
+
+  <footer class="texto-2">
+    <p>Fontes: Plus Jakarta Sans e Inter (OFL 1.1). Ícones: Phosphor (MIT). Protótipo da Fase 2; não é o app.</p>
+  </footer>
+</main>
+<script src="../../assets/design/boora.js"></script>
+</body>
+</html>
