@@ -54,6 +54,7 @@
   --altura-linha: 1.45;
   --altura-linha-titulo: 1.2;
   --espaco-letra-rotulo: 0.04em;
+  --espaco-letra-codigo: 0.3em; /* o código de 6 números */
 
   /* ---------- Espaço (base de 4 px) ---------- */
   --esp-1: 4px;
