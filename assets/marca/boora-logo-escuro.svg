@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 64" role="img" aria-label="Boora">
+  <g fill="none" stroke="#ECEEF2" stroke-width="9" stroke-linecap="round">
+    <path d="M12 6V58"/><circle cx="30" cy="40" r="18"/>
+    <circle cx="74" cy="40" r="18"/>
+    <circle cx="118" cy="40" r="18" stroke="#8AA8FF"/>
+    <path d="M144 58V40A18 18 0 0 1 162 22"/>
+    <circle cx="190" cy="40" r="18"/><path d="M208 22V58"/>
+  </g>
+</svg>

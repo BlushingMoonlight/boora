@@ -1,0 +1,197 @@
+/*
+  Boora — tokens do sistema de design (direção A, "Painel calmo", DEC-040).
+  A ÚNICA fonte de cores, tamanhos de fonte, espaços, raios, sombras e tempos (DEC-039).
+  Nenhum outro arquivo escreve um valor desses: usa var(--...). O scripts/verificar_design.mjs confere.
+  O tema segue o aparelho; data-tema="claro" ou "escuro" no <html> fixa um (DEC-044).
+*/
+
+@font-face { font-family: "Plus Jakarta Sans"; src: url("../fontes/plus-jakarta-sans-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../fontes/inter-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+
+:root {
+  color-scheme: light;
+
+  /* ---------- Cor (claro) ---------- */
+  --cor-fundo: #F6F7F9;
+  --cor-superficie: #FFFFFF;
+  --cor-superficie-2: #EEF1F5;
+  --cor-texto: #14181F;
+  --cor-texto-2: #5B6472;
+  --cor-linha: #E2E5EA;
+  --cor-linha-forte: #7C8594;
+  --cor-destaque: #2F5BD3;          /* a cor da marca e da ação principal; não é cor de estado */
+  --cor-sobre-destaque: #FFFFFF;
+  --cor-destaque-suave: #E8EEFB;
+  --cor-sobre-destaque-suave: #1F45AE;
+  --cor-bom: #1A7553;               /* "no plano" */
+  --cor-bom-suave: #EAF6F0;
+  --cor-atencao: #A15C00;           /* pagamento atrasado, teste acabando */
+  --cor-atencao-suave: #FBF1E3;
+  --cor-erro: #B42318;              /* só erro e sinal de risco (DEC-045) */
+  --cor-erro-suave: #FDECEA;
+  --cor-sobre-erro: #FFFFFF;
+  --cor-foco: #2F5BD3;
+  --cor-veu: rgba(20, 24, 31, 0.45);
+  --cor-esqueleto: #E6E9EE;
+  --cor-esqueleto-brilho: #F2F4F7;
+
+  /* ---------- Tipografia ---------- */
+  --fonte-titulo: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fonte-texto: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* em rem: acompanham o tamanho de texto do sistema; a legenda nunca fica abaixo de 12 px */
+  --texto-legenda: max(12px, 0.75rem);
+  --texto-pequeno: max(13px, 0.875rem);
+  --texto-corpo: 1rem;
+  --texto-grande: 1.125rem;
+  --titulo-3: 1.25rem;
+  --titulo-2: 1.5rem;
+  --titulo-1: 1.75rem;
+  --numero-grande: 2rem;
+  --peso-normal: 400;
+  --peso-medio: 500;
+  --peso-forte: 600;
+  --peso-titulo: 700;
+  --altura-linha: 1.45;
+  --altura-linha-titulo: 1.2;
+  --espaco-letra-rotulo: 0.04em;
+
+  /* ---------- Espaço (base de 4 px) ---------- */
+  --esp-1: 4px;
+  --esp-2: 8px;
+  --esp-3: 12px;
+  --esp-4: 16px;
+  --esp-5: 20px;
+  --esp-6: 24px;
+  --esp-7: 32px;
+  --esp-8: 40px;
+  --margem-tela: 16px;
+  --largura-conteudo: 640px;
+
+  /* ---------- Tamanhos ---------- */
+  --alvo-min: 44px;                 /* toque mínimo */
+  --alvo-principal: 52px;
+  --icone: 24px;
+  --icone-pequeno: 20px;
+  --borda: 1px;
+  --borda-foco: 3px;
+  --barra-progresso: 8px;
+  --interruptor-largura: 52px;
+  --interruptor-altura: 32px;
+  --interruptor-bolinha: 26px;
+
+  /* ---------- Raio ---------- */
+  --raio-pequeno: 8px;
+  --raio: 12px;
+  --raio-grande: 20px;
+  --raio-pilula: 999px;
+  --raio-circulo: 50%;
+
+  /* ---------- Sombra (só no que flutua) ---------- */
+  --sombra-flutuante: 0 8px 24px rgba(20, 24, 31, 0.16);
+  --sombra-nenhuma: none;
+
+  /* ---------- Movimento ---------- */
+  --tempo-rapido: 120ms;
+  --tempo: 200ms;
+  --tempo-lento: 280ms;
+  --curva: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ---------- Área segura (notch e barra de gestos) ---------- */
+  --seguro-topo: env(safe-area-inset-top, 0px);
+  --seguro-baixo: env(safe-area-inset-bottom, 0px);
+  --seguro-esquerda: env(safe-area-inset-left, 0px);
+  --seguro-direita: env(safe-area-inset-right, 0px);
+}
+
+/* ---------- Cor (escuro): o aparelho manda, a não ser que a pessoa fixe "Claro" ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    color-scheme: dark;
+    --cor-fundo: #111318;
+    --cor-superficie: #1A1D24;
+    --cor-superficie-2: #232733;
+    --cor-texto: #ECEEF2;
+    --cor-texto-2: #9AA3B2;
+    --cor-linha: #2A2F38;
+    --cor-linha-forte: #6E7787;
+    --cor-destaque: #8AA8FF;
+    --cor-sobre-destaque: #0E1A3A;
+    --cor-destaque-suave: #1E2A4A;
+    --cor-sobre-destaque-suave: #B9CBFF;
+    --cor-bom: #5CC9A0;
+    --cor-bom-suave: #16302A;
+    --cor-atencao: #E8B04A;
+    --cor-atencao-suave: #33270F;
+    --cor-erro: #FF8A80;
+    --cor-erro-suave: #3A1A18;
+    --cor-sobre-erro: #2A0705;
+    --cor-foco: #8AA8FF;
+    --cor-veu: rgba(0, 0, 0, 0.6);
+    --cor-esqueleto: #232733;
+    --cor-esqueleto-brilho: #2C313D;
+    --sombra-flutuante: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+}
+:root[data-tema="escuro"] {
+  color-scheme: dark;
+  --cor-fundo: #111318;
+  --cor-superficie: #1A1D24;
+  --cor-superficie-2: #232733;
+  --cor-texto: #ECEEF2;
+  --cor-texto-2: #9AA3B2;
+  --cor-linha: #2A2F38;
+  --cor-linha-forte: #6E7787;
+  --cor-destaque: #8AA8FF;
+  --cor-sobre-destaque: #0E1A3A;
+  --cor-destaque-suave: #1E2A4A;
+  --cor-sobre-destaque-suave: #B9CBFF;
+  --cor-bom: #5CC9A0;
+  --cor-bom-suave: #16302A;
+  --cor-atencao: #E8B04A;
+  --cor-atencao-suave: #33270F;
+  --cor-erro: #FF8A80;
+  --cor-erro-suave: #3A1A18;
+  --cor-sobre-erro: #2A0705;
+  --cor-foco: #8AA8FF;
+  --cor-veu: rgba(0, 0, 0, 0.6);
+  --cor-esqueleto: #232733;
+  --cor-esqueleto-brilho: #2C313D;
+  --sombra-flutuante: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- "Reduzir movimento": tudo instantâneo ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root { --tempo-rapido: 0ms; --tempo: 0ms; --tempo-lento: 0ms; }
+}
+
+/*
+  Pares de contraste que o verificar_design.mjs confere (mínimo 4,5:1), em claro e escuro.
+  Formato: texto / fundo.
+  @contraste cor-texto / cor-fundo
+  @contraste cor-texto / cor-superficie
+  @contraste cor-texto / cor-superficie-2
+  @contraste cor-texto-2 / cor-fundo
+  @contraste cor-texto-2 / cor-superficie
+  @contraste cor-texto-2 / cor-superficie-2
+  @contraste cor-destaque / cor-fundo
+  @contraste cor-destaque / cor-superficie
+  @contraste cor-sobre-destaque / cor-destaque
+  @contraste cor-sobre-destaque-suave / cor-destaque-suave
+  @contraste cor-texto / cor-destaque-suave
+  @contraste cor-texto-2 / cor-destaque-suave
+  @contraste cor-bom / cor-superficie
+  @contraste cor-bom / cor-bom-suave
+  @contraste cor-texto / cor-bom-suave
+  @contraste cor-atencao / cor-superficie
+  @contraste cor-atencao / cor-atencao-suave
+  @contraste cor-texto / cor-atencao-suave
+  @contraste cor-erro / cor-superficie
+  @contraste cor-erro / cor-fundo
+  @contraste cor-erro / cor-erro-suave
+  @contraste cor-texto / cor-erro-suave
+  @contraste cor-sobre-erro / cor-erro
+  Bordas de campo e de controle (mínimo 3:1, WCAG 1.4.11):
+  @contraste3 cor-linha-forte / cor-superficie
+  @contraste3 cor-linha-forte / cor-fundo
+  @contraste3 cor-foco / cor-fundo
+*/

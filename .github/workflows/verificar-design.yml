@@ -1,0 +1,26 @@
+name: Verificar design
+
+# Roda em todo PR (DEC-039): cores, tamanhos, espaços, raios, sombras e tempos só dos tokens; contraste;
+# alvo de 44 px; texto de 12 px ou mais; sem rolar para o lado; um botão principal por tela; data gerada;
+# palavras proibidas. Ver scripts/verificar_design.mjs.
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Instalar o Playwright e o Chromium
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Conferir o design
+        run: node scripts/verificar_design.mjs
