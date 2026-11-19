@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Boora — três direções visuais</title>
+<link rel="stylesheet" href="direcoes.css">
+</head>
+<body>
+<header class="cabeca">
+  <h1>Três direções visuais</h1>
+  <p>A mesma tela nas três: o <strong>Hoje</strong> da Ana às 12h. O conteúdo, a ordem e a ação principal são os da
+    árvore (Fase 1). Só muda o jeito de mostrar. Dados de exemplo, inventados. O nome da IA ainda não foi escolhido.</p>
+  <div class="tema" role="group" aria-label="Modo de cor">
+    <button type="button" data-tema="claro" aria-pressed="false">Claro</button>
+    <button type="button" data-tema="escuro" aria-pressed="false">Escuro</button>
+    <button type="button" data-tema="sistema" aria-pressed="true">Como o aparelho</button>
+  </div>
+</header>
+
+<main class="direcoes">
+
+<template id="hoje">
+  <div class="tela">
+    <div class="topo">
+      <div>
+        <p class="data">Terça, 19 de novembro</p>
+        <p class="ola">Boa tarde, Ana</p>
+      </div>
+      <button class="conversa" type="button" aria-label="Falar com a IA">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>
+      </button>
+    </div>
+
+    <section class="bloco proposta" aria-label="Proposta da IA">
+      <p class="rotulo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg> Proposta</p>
+      <p class="texto">Subir o agachamento para <strong class="num">25 kg</strong> no treino de hoje?</p>
+      <p class="porque">Na última vez você fez 3 × 10 com 20 kg e disse que ainda dava mais.</p>
+      <div class="botoes">
+        <button type="button" class="b-sec">Agora não</button>
+        <button type="button" class="b-pri">Aplicar</button>
+      </div>
+    </section>
+
+    <section class="bloco ia" aria-label="Mensagem do dia">
+      <p class="quem">IA <span>· nome a escolher</span></p>
+      <p class="fala">Hoje tem treino A às 18h. No almoço, capricha na proteína: faltam 58 g para a meta.</p>
+    </section>
+
+    <section class="bloco treino" aria-label="Treino de hoje">
+      <div class="linha">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6M6 7v10M18 7v10M21 9v6M6 12h12"/></svg>
+        <div>
+          <p class="t">Treino A · pernas e costas</p>
+          <p class="s"><span class="num">18h</span> · cerca de <span class="num">55</span> min · 6 exercícios</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloco comida" aria-label="Comida de hoje">
+      <div class="medida">
+        <p class="t">Calorias</p>
+        <p class="v"><span class="num grande">820</span> <span class="de">de <span class="num">1.850</span> kcal</span></p>
+        <div class="barra" role="img" aria-label="44% da meta"><span style="width:44%"></span></div>
+      </div>
+      <div class="medida">
+        <p class="t">Proteína</p>
+        <p class="v"><span class="num grande">52</span> <span class="de">de <span class="num">110</span> g</span></p>
+        <div class="barra" role="img" aria-label="47% da meta"><span style="width:47%"></span></div>
+      </div>
+    </section>
+
+    <section class="bloco agua" aria-label="Água de hoje">
+      <div class="linha">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg>
+        <div class="cresce">
+          <p class="t">Água</p>
+          <p class="s"><span class="num">1,1</span> de <span class="num">2,4</span> L</p>
+        </div>
+        <button type="button" class="b-sec pequeno">+ 300 mL</button>
+      </div>
+    </section>
+
+    <div class="principal">
+      <button type="button" class="b-pri largo">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+        Registrar almoço
+      </button>
+    </div>
+
+    <nav class="barra-nav" aria-label="Seções">
+      <a aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg>Hoje</a>
+      <a><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>Comida</a>
+      <a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6M6 7v10M18 7v10M21 9v6M6 12h12"/></svg>Treino</a>
+      <a><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19l5-6 4 3 7-9"/></svg>Evolução</a>
+      <a><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/></svg>Você</a>
+    </nav>
+  </div>
+</template>
+
+<article class="direcao dir-a" id="a">
+  <h2>A · Painel calmo</h2>
+  <p class="ideia">Um painel neutro e claro, onde só o que pede ação tem cor. Recomendada pela pesquisa.</p>
+  <div class="moldura" data-tela></div>
+  <dl class="ficha">
+    <dt>Fontes</dt><dd>Plus Jakarta Sans (títulos) e Inter (texto e números)</dd>
+    <dt>Cores</dt><dd><i style="--c:#F6F7F9"></i>#F6F7F9 fundo · <i style="--c:#FFFFFF"></i>#FFFFFF superfície ·
+      <i style="--c:#14181F"></i>#14181F texto · <i style="--c:#2F5BD3"></i>#2F5BD3 destaque azul ·
+      <i style="--c:#1E7F5C"></i>#1E7F5C "no plano" · <i style="--c:#A15C00"></i>#A15C00 atenção</dd>
+    <dt>Escuro</dt><dd>Cinza muito escuro (#111318), não preto puro; o azul clareia (#8AA8FF).</dd>
+    <dt>Jeito</dt><dd>Cantos de 12 px e botões em pílula; arejado no Hoje, compacto nas listas. Lembra Oura, WHOOP e
+      MacroFactor.</dd>
+  </dl>
+</article>
+
+<article class="direcao dir-b" id="b">
+  <h2>B · Noite de treino</h2>
+  <p class="ideia">Energia de academia, verde-limão de destaque, feita para o escuro (o padrão seria o escuro).</p>
+  <div class="moldura" data-tela></div>
+  <dl class="ficha">
+    <dt>Fontes</dt><dd>Space Grotesk (títulos e números) e Inter (texto)</dd>
+    <dt>Cores</dt><dd><i style="--c:#0B0C0B"></i>#0B0C0B fundo escuro · <i style="--c:#17191A"></i>#17191A superfície ·
+      <i style="--c:#F2F4F1"></i>#F2F4F1 texto · <i style="--c:#C8F03C"></i>#C8F03C destaque limão ·
+      <i style="--c:#F4F5F2"></i>#F4F5F2 fundo claro · <i style="--c:#4A7A00"></i>#4A7A00 destaque no claro</dd>
+    <dt>Escuro</dt><dd>Quase preto, com o limão aceso; no claro, o limão vira um verde-oliva para ter contraste.</dd>
+    <dt>Jeito</dt><dd>Cantos de 8 px, linhas finas, mais informação por tela. Lembra Ladder, WHOOP e Hevy. Risco: o verde
+      do destaque se confunde com "bom" e o tom puxa para competição.</dd>
+  </dl>
+</article>
+
+<article class="direcao dir-c" id="c">
+  <h2>C · Papel quente</h2>
+  <p class="ideia">Areia e terracota, acolhedor, quase um caderno de treino.</p>
+  <div class="moldura" data-tela></div>
+  <dl class="ficha">
+    <dt>Fontes</dt><dd>Manrope (títulos e números) e Figtree (texto)</dd>
+    <dt>Cores</dt><dd><i style="--c:#F7F3EC"></i>#F7F3EC fundo · <i style="--c:#FFFDF9"></i>#FFFDF9 superfície ·
+      <i style="--c:#1F1C18"></i>#1F1C18 texto · <i style="--c:#A84B29"></i>#A84B29 destaque terracota ·
+      <i style="--c:#3F7A5A"></i>#3F7A5A "no plano" · <i style="--c:#82600F"></i>#82600F atenção</dd>
+    <dt>Escuro</dt><dd>Marrom muito escuro (#1A1714); a terracota vira um salmão (#F0936B).</dd>
+    <dt>Jeito</dt><dd>Cantos de 16 px, pouca densidade, muito respiro. Lembra Gentler Streak e Oura. Risco: a terracota
+      fica perto do vermelho e pode soar como alerta; listas longas cansam.</dd>
+  </dl>
+</article>
+
+</main>
+
+<footer class="pe">
+  <p>Protótipo da Fase 2 do Boora. Não é o app. Fontes: Plus Jakarta Sans, Inter, Space Grotesk, Manrope e Figtree, sob a
+    SIL Open Font License 1.1 (<code>assets/fontes/</code>).</p>
+</footer>
+
+<script>
+  // Copia a mesma tela para as três direções.
+  var t = document.getElementById('hoje');
+  document.querySelectorAll('[data-tela]').forEach(function (m) { m.appendChild(t.content.cloneNode(true)); });
+
+  // ?so=a mostra uma direção só (usado nas capturas).
+  var so = new URLSearchParams(location.search).get('so');
+  if (so) document.documentElement.setAttribute('data-so', so);
+
+  // Claro, escuro ou como o aparelho; ?tema=escuro também funciona.
+  var raiz = document.documentElement;
+  function aplicar(tema) {
+    if (tema === 'sistema') raiz.removeAttribute('data-tema'); else raiz.setAttribute('data-tema', tema);
+    document.querySelectorAll('.tema button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.tema === tema));
+    });
+  }
+  document.querySelectorAll('.tema button').forEach(function (b) {
+    b.addEventListener('click', function () { aplicar(b.dataset.tema); });
+  });
+  var q = new URLSearchParams(location.search).get('tema');
+  if (q) aplicar(q);
+</script>
+</body>
+</html>
