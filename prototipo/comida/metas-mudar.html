@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>Mudar meta · Comida · Boora</title>
+<link rel="icon" href="../../assets/marca/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/marca/apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/design/tokens.css">
+<link rel="stylesheet" href="../../assets/design/componentes.css">
+</head>
+<body>
+<main class="tela">
+  <div class="tela__conteudo">
+    <header class="cabecalho"><a class="voltar" href="metas.html"><svg class="icone" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-caret-left"/></svg>Metas</a><span class="cabecalho__titulo">Mudar meta</span><a class="botao-dani" href="../hoje/conversa.html" aria-label="Falar com a Dani"><svg class="icone" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-chat-circle"/></svg></a></header>
+    <div class="campo campo--erro"><label class="campo__rotulo" for="nova">Calorias por dia</label><input class="campo__entrada" id="nova" inputmode="numeric" value="1.300" aria-invalid="true" aria-describedby="nova-erro">
+      <span class="campo__erro" id="nova-erro"><svg class="icone icone--pequeno" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-warning-circle"/></svg>Abaixo de 1.430 kcal o Boora não ajusta: é o seu gasto em repouso.</span></div>
+    <div class="aviso aviso--atencao" role="status"><svg class="icone" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-info"/></svg><div class="aviso__corpo"><p class="aviso__titulo">Esse é um limite seguro</p><p>Abaixo do seu gasto em repouso, o Boora não ajusta sozinho. Se quiser ir por aí, fale com um nutricionista.</p></div></div>
+  </div>
+  <div class="acao-fixa">
+    <a class="botao botao--principal" href="metas.html" aria-disabled="true">Salvar meta</a>
+  </div>
+  <nav class="secoes" aria-label="Seções">
+    <a href="../hoje/index.html"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-house"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-house-cheio"/></svg>Hoje</a>
+    <a href="index.html" aria-current="page"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-fork-knife"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-fork-knife-cheio"/></svg>Comida</a>
+    <a href="../index.html#secao-4"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-barbell"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-barbell-cheio"/></svg>Treino</a>
+    <a href="../index.html#secao-5"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-chart-line-up"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-chart-line-up-cheio"/></svg>Evolução</a>
+    <a href="../index.html#secao-6"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-user-circle"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-user-circle-cheio"/></svg>Você</a>
+  </nav>
+</main>
+<script src="../../assets/design/boora.js"></script>
+<script src="../prototipo.js"></script>
+</body>
+</html>

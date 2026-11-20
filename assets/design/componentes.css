@@ -249,6 +249,11 @@ p { margin: 0; }
     padding-top: var(--esp-6); box-shadow: inset calc(var(--borda) * -1) 0 0 0 var(--cor-linha); }
   .tela:has(.secoes:not(.secoes--solta)) { padding-left: calc(var(--alvo-principal) * 2 + var(--esp-6)); padding-bottom: var(--esp-8); }
 }
+/* Com a ação fixa em cima da barra das seções, o fim da tela sobe as duas alturas: nada fica escondido atrás delas */
+.tela:has(> .acao-fixa:not(.acao-fixa--sozinha)):has(> .secoes:not(.secoes--solta)) { padding-bottom: calc(var(--alvo-principal) * 2 + var(--esp-8) + var(--seguro-baixo)); }
+@media (min-width: 1024px) and (orientation: landscape) {
+  .tela:has(> .acao-fixa:not(.acao-fixa--sozinha)):has(> .secoes:not(.secoes--solta)) { padding-bottom: calc(var(--alvo-principal) + var(--esp-8)); }
+}
 
 /* ---------- Telas de passo (o começo e outras sequências): sem a barra das seções ---------- */
 .tela--passo { padding-bottom: calc(var(--alvo-principal) * 2 + var(--esp-8) + var(--seguro-baixo)); }
@@ -312,3 +317,16 @@ p { margin: 0; }
 
 /* A meta ao lado do número feito fica no tamanho do texto: "820 de 1.600 kcal" cabe numa linha */
 .medida__valor .num--meta { font-size: var(--texto-corpo); color: var(--cor-texto-2); }
+
+/* ---------- Comida (seção 3) ---------- */
+/* Ontem, o dia e Amanhã numa linha */
+.fila-dia { display: flex; align-items: center; justify-content: space-between; gap: var(--esp-2); }
+/* A área da câmera, já aberta ao registrar */
+.camera { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--esp-2);
+  min-height: calc(var(--alvo-principal) * 4); border-radius: var(--raio-grande); background: var(--cor-superficie-2); color: var(--cor-texto-2); }
+.camera .icone { width: var(--alvo-min); height: var(--alvo-min); }
+/* Os grupos da semana, um embaixo do outro, cada um com a sua barra */
+.grupos-semana { display: flex; flex-direction: column; gap: var(--esp-4); }
+/* Ação de apagar, separada do resto */
+.perigo { display: flex; justify-content: center; padding-top: var(--esp-4); }
+.campo__entrada--texto { min-height: calc(var(--alvo-principal) * 2); resize: vertical; }

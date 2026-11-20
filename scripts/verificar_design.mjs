@@ -16,6 +16,7 @@
 //   7. dia da semana escrito à mão no HTML, ou diferente da data em data-data (DEC-048);
 //   8. palavra proibida (regulacao.md, seção 8, e voz.md, no boora-sistema): também culpa e gênero para a pessoa;
 //   9. emoji no texto das telas (DEC-050).
+//   Telas do Modo profissional (<html data-modo="profissional">) podem usar "plano alimentar", "cardápio" e "dieta" (DEC-052).
 //
 // A fonte da regra fica aqui, no boora. O boora-sistema guarda uma cópia em scripts/ (DEC-039).
 // Fica de fora: prototipo/direcoes/ (o registro da etapa 1, com as três direções, inclusive as que não foram escolhidas).
@@ -147,6 +148,8 @@ const PROIBIDAS = [
 ];
 // Emoji (DEC-050). Fora: ©, ® e ™, que são texto, e as setas simples.
 const EMOJI = /(?![\u00A9\u00AE\u2122\u2194-\u2199])\p{Extended_Pictographic}/u;
+// Os termos que o Modo profissional libera (DEC-052).
+const TERMOS_PROFISSIONAIS = ['"dieta" (use "registro de refeições", "metas")', '"plano alimentar"', '"cardápio"'];
 const DIAS = /\b(segunda|terça|terca|quarta|quinta|sexta|sábado|sabado|domingo)(-feira)?,\s*\d/i;
 function textoVisivel(html) {
   return html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<template[\s\S]*?<\/template>/gi, (t) => t.replace(/<[^>]+>/g, ' '))
@@ -155,7 +158,13 @@ function textoVisivel(html) {
 for (const arq of listar('prototipo', ['.html'])) {
   const html = fs.readFileSync(path.join(RAIZ, arq), 'utf8');
   const txt = textoVisivel(html);
-  for (const [re, nome] of PROIBIDAS) if (re.test(txt)) erro(arq, `palavra proibida: ${nome}`);
+  // DEC-052: "plano alimentar", "cardápio" e "dieta" só aparecem nas telas do Modo profissional, marcadas com
+  // <html data-modo="profissional">. Nas outras, continuam bloqueados.
+  const modoProfissional = /<html[^>]*data-modo="profissional"/.test(html);
+  for (const [re, nome] of PROIBIDAS) {
+    if (modoProfissional && TERMOS_PROFISSIONAIS.includes(nome)) continue;
+    if (re.test(txt)) erro(arq, `palavra proibida: ${nome}`);
+  }
   const emoji = txt.match(EMOJI);
   if (emoji) erro(arq, `emoji "${emoji[0]}" (DEC-050: sem emoji, nunca)`);
   if (DIAS.test(txt)) erro(arq, 'dia da semana escrito à mão: use <span data-data="AAAA-MM-DD"></span> (DEC-048)');
