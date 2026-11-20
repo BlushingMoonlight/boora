@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>Conversa com a Dani · Conversa · Boora</title>
+<link rel="icon" href="../../assets/marca/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/marca/apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/design/tokens.css">
+<link rel="stylesheet" href="../../assets/design/componentes.css">
+</head>
+<body>
+<main class="tela">
+  <div class="tela__conteudo">
+    <header class="cabecalho"><a class="voltar" href="index.html"><svg class="icone" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-caret-left"/></svg>Hoje</a><span class="cabecalho__titulo">Dani</span></header>
+    <div class="conversa" aria-live="polite">
+      <p class="balao balao--pessoa">comi um pão com ovo no café</p>
+      <p class="balao">Registrei no café: pão com ovo, <span class="num">~300</span> kcal e <span class="num">14</span> g de proteína.</p>
+      <div class="recado" role="status"><span>Café registrado.</span><a class="botao botao--texto" href="conversa-desfeito.html">Desfazer</a></div>
+      <p class="balao balao--pessoa">como foi o meu dia até agora?</p>
+      <div class="balao balao--resumo"><span class="rotulo"><svg class="icone icone--pequeno" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-sparkle"/></svg>O seu dia</span>
+        <div class="medidas"><a class="medida medida--link" href="pq.html" aria-label="Calorias: 820 de 1.600 kcal. Por que este número"><span class="medida__nome">Calorias<svg class="icone icone--pequeno" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-info"/></svg></span><span class="medida__valor"><span class="num">820</span> de <span class="num num--meta">1.600</span> kcal</span>
+            <span class="progresso" role="img" aria-label="51% da meta"><span class="progresso__feito" style="width: 51%"></span></span></a><a class="medida medida--link" href="pq-proteina.html" aria-label="Proteína: 52 de 110 g. Por que este número"><span class="medida__nome">Proteína<svg class="icone icone--pequeno" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-info"/></svg></span><span class="medida__valor"><span class="num">52</span> de <span class="num num--meta">110</span> g</span>
+            <span class="progresso" role="img" aria-label="47% da meta"><span class="progresso__feito" style="width: 47%"></span></span></a></div>
+        <p>Água: <span class="num">1,2</span> de <span class="num">2,4</span> L. Treino A às 18h.</p></div>
+      <p class="balao">Faltam 58 g de proteína: um iogurte e um ovo no lanche já ajudam. E uma sugestão:</p>
+      <div class="bloco proposta">
+        <span class="rotulo"><svg class="icone icone--pequeno" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-sparkle"/></svg>A Dani sugere</span>
+        <p class="proposta__texto">Subir a proteína de <span class="num">110</span> para <span class="num">120 g</span> por dia?</p>
+        <p class="proposta__porque">Você treinou 4 vezes por semana nas últimas 3 semanas. Pelo protocolo de necessidades, versão 1.</p>
+        <div class="acoes"><a class="botao botao--texto" href="conversa.html">Agora não</a><a class="botao botao--suave" href="index-aplicada.html">Aplicar</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="acao-fixa">
+    <form class="compositor" action="conversa.html">
+      <div class="campo"><label class="so-leitor" for="msg">Escreva para a Dani</label><input class="campo__entrada" id="msg" placeholder="Escreva para a Dani" autocomplete="off"></div>
+      <button class="botao botao--principal" type="submit">Enviar</button>
+    </form>
+  </div>
+  <nav class="secoes" aria-label="Seções">
+    <a href="index.html" aria-current="page"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-house"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-house-cheio"/></svg>Hoje</a>
+    <a href="../index.html#secao-3"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-fork-knife"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-fork-knife-cheio"/></svg>Comida</a>
+    <a href="../index.html#secao-4"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-barbell"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-barbell-cheio"/></svg>Treino</a>
+    <a href="../index.html#secao-5"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-chart-line-up"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-chart-line-up-cheio"/></svg>Evolução</a>
+    <a href="../index.html#secao-6"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-user-circle"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-user-circle-cheio"/></svg>Você</a>
+  </nav>
+</main>
+<script src="../../assets/design/boora.js"></script>
+<script src="../prototipo.js"></script>
+</body>
+</html>
