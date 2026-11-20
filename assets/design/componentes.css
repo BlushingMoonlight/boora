@@ -282,10 +282,33 @@ p { margin: 0; }
 :is(h2, h3).bloco__titulo { font-size: var(--texto-grande); }
 /* Várias perguntas de escolha na mesma tela (experiência por modalidade; antes do déficit) */
 .grupos-escolha { display: flex; flex-direction: column; gap: var(--esp-6); }
-.opcoes--linha { display: grid; grid-template-columns: repeat(3, 1fr); }
+.opcoes--linha { display: grid; grid-template-columns: repeat(2, 1fr); }
+.opcoes--linha .opcao:nth-of-type(3) { grid-column: 1 / -1; } /* "Prefiro não dizer" numa linha só */
 .opcoes--linha legend { grid-column: 1 / -1; margin-bottom: var(--esp-2); }
 .opcoes--linha .opcao { padding: var(--esp-2) var(--esp-3); }
 .opcoes--grade-2 { display: grid; grid-template-columns: repeat(2, 1fr); }
 .opcoes--grade-2 legend { grid-column: 1 / -1; margin-bottom: var(--esp-2); }
 .opcao input { flex: none; } /* a bolinha não encolhe quando o texto quebra */
 .grupos-escolha .opcoes { gap: var(--esp-2); }
+
+/* ---------- Hoje e a conversa (seção 2) ---------- */
+.conversa { display: flex; flex-direction: column; gap: var(--esp-3); }
+.balao--resumo { max-width: 100%; display: flex; flex-direction: column; gap: var(--esp-2); }
+/* Um número que abre "Por que este número" (PQ) */
+.medida--link { color: inherit; text-decoration: none; min-height: var(--alvo-min); border-radius: var(--raio-pequeno); }
+.medida--link:active, .medida--link.tocado { background: var(--cor-superficie-2); }
+.medida--link .medida__nome { display: inline-flex; align-items: center; gap: var(--esp-1); }
+/* Atalhos do Hoje: até 3, cada um com ícone e palavra */
+.atalhos { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--esp-2); }
+.atalhos .botao { flex-direction: column; gap: var(--esp-1); min-height: var(--alvo-principal); padding: var(--esp-3) var(--esp-2); font-size: var(--texto-pequeno); border-radius: var(--raio); text-align: center; line-height: var(--altura-linha-titulo); }
+/* O campo da conversa fica embaixo, com o "Enviar" ao lado */
+.compositor { display: flex; gap: var(--esp-2); align-items: flex-end; max-width: var(--largura-conteudo); margin: 0 auto; }
+.compositor .campo { flex: 1; }
+.compositor .botao--principal { flex: none; }
+.acao-fixa > .compositor { width: 100%; }
+/* O recado depois de um registro, preso logo acima da ação fixa */
+.recado--fixo { position: fixed; left: max(var(--margem-tela), var(--seguro-esquerda)); right: max(var(--margem-tela), var(--seguro-direita));
+  bottom: calc(var(--alvo-principal) * 2 + var(--esp-6) + var(--seguro-baixo)); max-width: var(--largura-conteudo); margin: 0 auto; }
+
+/* A meta ao lado do número feito fica no tamanho do texto: "820 de 1.600 kcal" cabe numa linha */
+.medida__valor .num--meta { font-size: var(--texto-corpo); color: var(--cor-texto-2); }
