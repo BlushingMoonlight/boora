@@ -280,3 +280,12 @@ p { margin: 0; }
 .secao-mapa { display: flex; flex-direction: column; gap: var(--esp-3); padding-top: var(--esp-4); }
 /* Título de bloco quando é um título de verdade (h2, h3): menor que o título da tela */
 :is(h2, h3).bloco__titulo { font-size: var(--texto-grande); }
+/* Várias perguntas de escolha na mesma tela (experiência por modalidade; antes do déficit) */
+.grupos-escolha { display: flex; flex-direction: column; gap: var(--esp-6); }
+.opcoes--linha { display: grid; grid-template-columns: repeat(3, 1fr); }
+.opcoes--linha legend { grid-column: 1 / -1; margin-bottom: var(--esp-2); }
+.opcoes--linha .opcao { padding: var(--esp-2) var(--esp-3); }
+.opcoes--grade-2 { display: grid; grid-template-columns: repeat(2, 1fr); }
+.opcoes--grade-2 legend { grid-column: 1 / -1; margin-bottom: var(--esp-2); }
+.opcao input { flex: none; } /* a bolinha não encolhe quando o texto quebra */
+.grupos-escolha .opcoes { gap: var(--esp-2); }

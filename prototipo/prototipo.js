@@ -4,11 +4,13 @@
 
   1. ?perfil=adolescente: o caminho de 14 a 17 anos. Os links seguem com o parâmetro; um link com
      data-adolescente="pagina.html" troca de destino; [data-texto-adolescente] e [data-valor-adolescente] trocam o texto;
-     [data-esconde-adolescente] some; [data-marca-adolescente] marca a opção; a barra dos passos conta 14.
+     [data-esconde-adolescente] some; [data-marca-adolescente] marca a opção; a barra dos passos conta 17.
   2. data-avancar="pagina.html" num grupo de opções: escolher já avança (escolha única, entrada.md).
   3. data-precisa="id" num botão: ele só liga quando o campo (ou a caixa) com esse id estiver preenchido.
      data-precisa-algum="nome": liga quando alguma caixa com esse name estiver marcada.
-  4. data-triagem num grupo: com alguma situação marcada, o botão principal vira "Continuar" e vai para data-cuidado.
+  4. data-triagem num grupo: com alguma situação marcada, o botão principal vira "Continuar" e vai para data-cuidado
+     (com data-so-sim, só uma resposta "sim" vai para data-cuidado). data-avancar-tudo: avança quando todos os grupos
+     da tela têm resposta.
   5. data-codigo-vai="pagina.html" num campo de código: avança sozinho no 6º número.
   6. Link com aria-disabled="true" não navega.
 */
@@ -37,7 +39,7 @@
     document.querySelectorAll('[data-marca-adolescente] input').forEach(function (el) { el.checked = true; });
     // De 14 a 17, o começo tem um passo a mais (o e-mail do responsável)
     document.querySelectorAll('[data-passo]').forEach(function (el) {
-      var n = Number(el.dataset.passo), total = 14;
+      var n = Number(el.dataset.passo), total = 17;
       el.querySelector('.progresso').setAttribute('aria-label', 'Passo ' + n + ' de ' + total);
       el.querySelector('.progresso__feito').style.width = Math.round(n / total * 100) + '%';
       el.querySelector('.passo__numero').textContent = n + ' de ' + total;
@@ -73,8 +75,19 @@
     var original = { texto: botao.textContent, href: botao.getAttribute('href') };
     grupo.addEventListener('change', function () {
       var algum = grupo.querySelector('input:checked');
+      // data-so-sim: só a resposta "sim" leva ao cuidado; "não" e "prefiro não dizer" seguem (antes do déficit)
+      var cuidado = grupo.hasAttribute('data-so-sim') ? grupo.querySelector('input[value="sim"]:checked') : algum;
       botao.textContent = algum ? 'Continuar' : original.texto;
-      botao.setAttribute('href', algum ? comPerfil(grupo.dataset.cuidado) : original.href);
+      botao.setAttribute('href', cuidado ? comPerfil(grupo.dataset.cuidado) : original.href);
+    });
+  });
+
+  // 4b. Várias escolhas na mesma tela: avança quando todas tiverem resposta
+  document.querySelectorAll('[data-avancar-tudo]').forEach(function (bloco) {
+    bloco.addEventListener('change', function () {
+      var grupos = bloco.querySelectorAll('fieldset');
+      var todas = Array.prototype.every.call(grupos, function (g) { return g.querySelector('input:checked'); });
+      if (todas) setTimeout(function () { ir(bloco, bloco.dataset.avancarTudo); }, 150);
     });
   });
 
