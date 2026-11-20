@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>Quando você nasceu? · Começo · Boora</title>
+<link rel="icon" href="../../assets/marca/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/marca/apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/design/tokens.css">
+<link rel="stylesheet" href="../../assets/design/componentes.css">
+</head>
+<body>
+<main class="tela tela--passo">
+  <div class="tela__conteudo">
+    <header class="cabecalho"><a class="voltar" href="index.html"><svg class="icone" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-caret-left"/></svg>Voltar</a></header>
+    <div class="passo" data-passo="2"><span class="progresso" role="img" aria-label="Passo 2 de 16"><span class="progresso__feito" style="width: 12%"></span></span><span class="passo__numero">2 de 16</span></div>
+    <h1>Quando você nasceu?</h1>
+    <div class="campo">
+      <label class="campo__rotulo" for="nascimento">Data de nascimento</label><span class="campo__ajuda" id="nascimento-ajuda">Dia, mês e ano, como 12/03/1994.</span>
+      <input class="campo__entrada" id="nascimento" type="text" inputmode="numeric" value="12/03/1994" aria-describedby="nascimento-ajuda" autocomplete="bday">
+    </div>
+  </div>
+  <div class="acao-fixa acao-fixa--sozinha">
+    <a class="botao botao--principal" href="03-consentimento.html" data-precisa="nascimento">Continuar</a>
+  </div>
+</main>
+<script src="../../assets/design/boora.js"></script>
+<script src="../prototipo.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>Seu responsável · Começo · Boora</title>
+<link rel="icon" href="../../assets/marca/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/marca/apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/design/tokens.css">
+<link rel="stylesheet" href="../../assets/design/componentes.css">
+</head>
+<body>
+<main class="tela tela--passo">
+  <div class="tela__conteudo">
+    <header class="cabecalho"><a class="voltar" href="16-codigo.html?perfil=adolescente"><svg class="icone" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-caret-left"/></svg>Voltar</a></header>
+    <div class="passo" data-passo="17"><span class="progresso" role="img" aria-label="Passo 17 de 17"><span class="progresso__feito" style="width: 100%"></span></span><span class="passo__numero">17 de 17</span></div>
+    <h1>Qual é o e-mail do seu responsável?</h1>
+    <p class="texto-2">A lei pede que um adulto acompanhe sua conta. Ele recebe um convite e confirma com um código.</p>
+    <div class="campo campo--erro">
+      <label class="campo__rotulo" for="resp">E-mail do responsável</label>
+      <input class="campo__entrada" id="resp" type="email" inputmode="email" value="lucas@exemplo.com" aria-describedby="resp-erro" aria-invalid="true">
+      <span class="campo__erro" id="resp-erro"><svg class="icone icone--pequeno" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-warning-circle"/></svg>Esse é o seu e-mail. Escreva o do seu responsável.</span>
+    </div>
+    <section class="bloco" aria-labelledby="t-ate">
+      <h2 class="bloco__titulo" id="t-ate">Até a confirmação</h2>
+      <p>Você já vê suas metas e o treino e registra no aparelho. A conversa com a Dani, as fotos e os avisos abrem quando o seu responsável confirmar.</p>
+    </section>
+  </div>
+  <div class="acao-fixa acao-fixa--sozinha">
+    <a class="botao botao--principal" href="17-responsavel-erro.html" data-precisa="resp">Mandar convite</a>
+  </div>
+</main>
+<script src="../../assets/design/boora.js"></script>
+<script src="../prototipo.js"></script>
+</body>
+</html>

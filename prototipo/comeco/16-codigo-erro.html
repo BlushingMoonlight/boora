@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>O código · Começo · Boora</title>
+<link rel="icon" href="../../assets/marca/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/marca/apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/design/tokens.css">
+<link rel="stylesheet" href="../../assets/design/componentes.css">
+</head>
+<body>
+<main class="tela tela--passo">
+  <div class="tela__conteudo">
+    <header class="cabecalho"><a class="voltar" href="15-email.html"><svg class="icone" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-caret-left"/></svg>Voltar</a></header>
+    <div class="passo" data-passo="16"><span class="progresso" role="img" aria-label="Passo 16 de 16"><span class="progresso__feito" style="width: 100%"></span></span><span class="passo__numero">16 de 16</span></div>
+    <h1>Digite o código</h1>
+    <p class="texto-2">Mandamos um código de 6 números para <strong data-texto-adolescente="lucas@exemplo.com">ana@exemplo.com</strong>. Ele vale 10 minutos.</p>
+    <div class="campo campo--erro">
+      <label class="campo__rotulo" for="codigo">Código</label>
+      <input class="campo__entrada campo__entrada--codigo" id="codigo" type="text" inputmode="numeric" value="482913" aria-describedby="codigo-erro" aria-invalid="true" autocomplete="one-time-code" maxlength="6" data-codigo-vai="../index.html#secao-2" data-adolescente="17-responsavel.html">
+      <span class="campo__erro" id="codigo-erro"><svg class="icone icone--pequeno" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-warning-circle"/></svg>Esse código não bate. Confira o último e-mail do Boora.</span>
+    </div>
+    <p class="texto-2">A conta é criada e começa o teste grátis de 7 dias, sem cartão.</p>
+    <p class="texto-2" data-texto-adolescente="Para você, o teste começa quando o seu responsável confirmar."></p>
+  </div>
+  <div class="acao-fixa acao-fixa--sozinha">
+    <a class="botao botao--texto" href="16-codigo.html">Reenviar código</a>
+    <a class="botao botao--texto" href="15-email.html">Trocar e-mail</a>
+  </div>
+</main>
+<script src="../../assets/design/boora.js"></script>
+<script src="../prototipo.js"></script>
+</body>
+</html>
