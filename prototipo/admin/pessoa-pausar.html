@@ -1,0 +1,32 @@
+<!doctype html>
+<html data-tela="AP2" data-estado="variante" lang="pt-BR" data-hoje="2026-11-19">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>Mais ações · Administrador · Boora</title>
+<link rel="icon" href="../../assets/marca/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/marca/apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/design/tokens.css">
+<link rel="stylesheet" href="../../assets/design/componentes.css">
+</head>
+<body>
+<main class="tela tela--passo">
+  <div class="tela__conteudo">
+    <header class="cabecalho"><a class="voltar" href="pessoa.html"><svg class="icone" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-caret-left"/></svg>Ficha</a><span class="cabecalho__titulo">Mais ações</span></header>
+    <div class="lista"><div class="linha"><svg class="icone linha__icone" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-lock"/></svg><span class="linha__texto"><span class="linha__titulo">Pausar o acesso</span><span class="linha__sub"></span></span></div></div>
+  </div>
+  <div class="veu">
+    <div class="folha" role="dialog" aria-modal="true" aria-labelledby="f-pausa">
+      <h2 id="f-pausa">Pausar o acesso de ana@exemplo.com?</h2>
+      <p>A conta fica pausada: a pessoa vê tudo, baixa os dados e pode excluir a conta, mas não registra, não conversa e não recebe avisos. A cobrança no Asaas fica suspensa. Os 90 dias não contam: os dados ficam até você reativar. Ela recebe um e-mail.</p>
+      <div class="campo"><label class="campo__rotulo" for="motivo-pausa">Motivo (fica no registro)</label><input class="campo__entrada" id="motivo-pausa" type="text" value="Pedido da pessoa por e-mail"></div>
+      <div class="acoes"><a class="botao botao--texto" href="pessoa-mais.html">Voltar</a><a class="botao botao--perigo" href="pessoa-pausada.html">Pausar o acesso</a></div>
+    </div>
+  </div>
+</main>
+<script src="../../assets/design/boora.js"></script>
+<script src="../prototipo.js"></script>
+</body>
+</html>
