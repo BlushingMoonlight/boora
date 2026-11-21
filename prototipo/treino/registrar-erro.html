@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>Registrar atividade · Treino · Boora</title>
+<link rel="icon" href="../../assets/marca/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/marca/apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/design/tokens.css">
+<link rel="stylesheet" href="../../assets/design/componentes.css">
+</head>
+<body>
+<main class="tela">
+  <div class="tela__conteudo">
+    <header class="cabecalho"><a class="voltar" href="index.html"><svg class="icone" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-caret-left"/></svg>Treino</a><span class="cabecalho__titulo">Registrar atividade</span><a class="botao-dani" href="../hoje/conversa.html" aria-label="Falar com a Dani"><svg class="icone" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-chat-circle"/></svg></a></header>
+    <fieldset class="opcoes opcoes--grade-2"><legend class="campo__rotulo">Tipo</legend><label class="opcao"><input type="radio" name="tipo" checked> Corrida</label><label class="opcao"><input type="radio" name="tipo"> Caminhada</label><label class="opcao"><input type="radio" name="tipo"> Bike</label><label class="opcao"><input type="radio" name="tipo"> Outra</label></fieldset>
+    <div class="campo"><label class="campo__rotulo" for="dist">Distância (km)</label><input class="campo__entrada" id="dist" inputmode="decimal" value="5,5"></div><div class="campo campo--erro"><label class="campo__rotulo" for="tempo">Tempo (min)</label><input class="campo__entrada" id="tempo" inputmode="decimal" value="" aria-invalid="true" aria-describedby="tempo-erro"><span class="campo__erro" id="tempo-erro"><svg class="icone icone--pequeno" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-warning-circle"/></svg>Falta o tempo: sem ele, não dá para calcular o ritmo.</span></div>
+    <fieldset class="opcoes opcoes--grade"><legend class="campo__rotulo">Esforço (de 1 a 10)</legend><label class="opcao"><input type="radio" name="esf"> 1</label><label class="opcao"><input type="radio" name="esf"> 2</label><label class="opcao"><input type="radio" name="esf"> 3</label><label class="opcao"><input type="radio" name="esf"> 4</label><label class="opcao"><input type="radio" name="esf"> 5</label><label class="opcao"><input type="radio" name="esf" checked> 6</label><label class="opcao"><input type="radio" name="esf"> 7</label><label class="opcao"><input type="radio" name="esf"> 8</label><label class="opcao"><input type="radio" name="esf"> 9</label><label class="opcao"><input type="radio" name="esf"> 10</label></fieldset>
+    <details class="mais"><summary>Mais (opcional): subida, frequência cardíaca</summary><div class="campo"><label class="campo__rotulo" for="subida">Subida (m)</label><input class="campo__entrada" id="subida" inputmode="decimal" value=""></div><div class="campo"><label class="campo__rotulo" for="fc">Frequência cardíaca média (bpm)</label><input class="campo__entrada" id="fc" inputmode="decimal" value=""></div></details>
+  </div>
+  <div class="acao-fixa">
+    <a class="botao botao--principal" href="#" aria-disabled="true">Salvar</a>
+  </div>
+  <nav class="secoes" aria-label="Seções">
+    <a href="../hoje/index.html"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-house"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-house-cheio"/></svg>Hoje</a>
+    <a href="../comida/index.html"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-fork-knife"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-fork-knife-cheio"/></svg>Comida</a>
+    <a href="index.html" aria-current="page"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-barbell"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-barbell-cheio"/></svg>Treino</a>
+    <a href="../index.html#secao-5"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-chart-line-up"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-chart-line-up-cheio"/></svg>Evolução</a>
+    <a href="../index.html#secao-6"><svg class="icone icone--vazio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-user-circle"/></svg><svg class="icone icone--cheio" aria-hidden="true"><use href="../../assets/icones/phosphor.svg#i-user-circle-cheio"/></svg>Você</a>
+  </nav>
+</main>
+<script src="../../assets/design/boora.js"></script>
+<script src="../prototipo.js"></script>
+</body>
+</html>

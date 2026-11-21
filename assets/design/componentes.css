@@ -330,3 +330,22 @@ p { margin: 0; }
 /* Ação de apagar, separada do resto */
 .perigo { display: flex; justify-content: center; padding-top: var(--esp-4); }
 .campo__entrada--texto { min-height: calc(var(--alvo-principal) * 2); resize: vertical; }
+
+/* ---------- Treino (seção 4) ---------- */
+/* A fonte de um número que veio do relógio: "· Polar" (DEC-085) */
+.fonte { color: var(--cor-texto-2); font-size: var(--texto-pequeno); white-space: nowrap; }
+/* Uma linha com dois alvos: o item e, no fim, o "por que" do número */
+.linha__alvo { flex: 1; min-height: var(--alvo-min); display: flex; flex-direction: column; justify-content: center; color: inherit; text-decoration: none; }
+.icone-alvo { flex: none; min-width: var(--alvo-min); min-height: var(--alvo-min); display: inline-flex; align-items: center; justify-content: center; color: var(--cor-texto-2); border-radius: var(--raio-pequeno); }
+.icone-alvo:active, .icone-alvo.tocado { background: var(--cor-superficie-2); }
+/* Ajustar carga e repetições antes de "Feita": menos, o número, mais */
+.ajuste { display: flex; align-items: center; gap: var(--esp-3); }
+.ajuste__botao { flex: none; width: var(--alvo-principal); min-height: var(--alvo-principal); padding: 0; justify-content: center; }
+.ajuste__valor { flex: 1; display: flex; flex-direction: column; align-items: center; font-size: var(--texto-grande); }
+.ajuste__valor .num { font-size: var(--numero-grande); line-height: var(--altura-linha-titulo); }
+.ajuste__rotulo { font-size: var(--texto-pequeno); color: var(--cor-texto-2); }
+/* O descanso contando */
+.cronometro { font-family: var(--fonte-titulo); font-size: var(--numero-grande); line-height: var(--altura-linha-titulo); text-align: center; font-variant-numeric: tabular-nums; }
+/* O que é opcional fica recolhido */
+.mais summary { min-height: var(--alvo-min); display: flex; align-items: center; color: var(--cor-destaque); font-weight: var(--peso-forte); cursor: pointer; }
+.mais[open] { display: flex; flex-direction: column; gap: var(--esp-3); }
