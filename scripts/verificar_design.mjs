@@ -15,7 +15,9 @@
 //   6. mais de um botão principal visível na mesma tela (DEC-048), fora da página de componentes;
 //   7. dia da semana escrito à mão no HTML, ou diferente da data em data-data (DEC-048);
 //   8. palavra proibida (regulacao.md, seção 8, e voz.md, no boora-sistema): também culpa e gênero para a pessoa;
-//   9. emoji no texto das telas (DEC-050).
+//   9. emoji no texto das telas (DEC-050);
+//  10. tela sem o seu "hoje" (<html data-hoje="AAAA-MM-DD">), ou data de registro depois dele. Plano futuro (o ciclo,
+//      a troca do treino) leva data-futuro no elemento e fica liberado (revisão do #78).
 //   Telas do Modo profissional (<html data-modo="profissional">) podem usar "plano alimentar", "cardápio" e "dieta" (DEC-052).
 //
 // A fonte da regra fica aqui, no boora. O boora-sistema guarda uma cópia em scripts/ (DEC-039).
@@ -168,6 +170,14 @@ for (const arq of listar('prototipo', ['.html'])) {
   const emoji = txt.match(EMOJI);
   if (emoji) erro(arq, `emoji "${emoji[0]}" (DEC-050: sem emoji, nunca)`);
   if (DIAS.test(txt)) erro(arq, 'dia da semana escrito à mão: use <span data-data="AAAA-MM-DD"></span> (DEC-048)');
+  // 10. Um "hoje" por tela, e nenhum registro depois dele
+  if (/^prototipo\/[^/]+\/[^/]+\.html$/.test(arq.split(path.sep).join('/')) && !arq.includes('componentes')) {
+    const h = html.match(/<html[^>]*\sdata-hoje="(\d{4}-\d{2}-\d{2})"/);
+    if (!h) erro(arq, 'falta o "hoje" da tela: <html data-hoje="AAAA-MM-DD">');
+    else for (const t of html.matchAll(/<[^>]*\sdata-data="(\d{4}-\d{2}-\d{2})"[^>]*>/g)) {
+      if (t[1] > h[1] && !/\sdata-futuro/.test(t[0])) erro(arq, `data ${t[1]} depois do "hoje" da tela (${h[1]}): registro não pode ser do futuro; um plano futuro leva data-futuro`);
+    }
+  }
 }
 
 // ---------- 3 a 7. As páginas, no navegador ----------

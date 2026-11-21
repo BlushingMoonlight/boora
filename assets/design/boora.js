@@ -1,6 +1,8 @@
 /*
   Boora — o pouco de comportamento comum a todas as telas do protótipo.
   1. Dia da semana gerado a partir da data (DEC-048): <span data-data="2026-11-19"></span> vira "Quinta, 19 de novembro".
+     Data de outro ano mostra o ano: "Quarta, 12 de novembro de 2025". O ano de referência é o "hoje" da tela
+     (<html data-hoje="AAAA-MM-DD">); sem ele, o dia de hoje do aparelho.
   2. Tema (DEC-044): segue o aparelho; "Claro" ou "Escuro" ficam guardados neste aparelho (Você › Aparência).
   3. "~650 kcal": tocar mostra a faixa (DEC-019).
 */
@@ -14,8 +16,11 @@
     var resto = new Intl.DateTimeFormat('pt-BR', comAno ? { day: 'numeric', month: 'long', year: 'numeric' } : { day: 'numeric', month: 'long' }).format(d);
     return dia.charAt(0).toUpperCase() + dia.slice(1) + ', ' + resto;
   }
+  var hoje = document.documentElement.dataset.hoje || new Date().toISOString().slice(0, 10);
+  var anoHoje = hoje.slice(0, 4);
   document.querySelectorAll('[data-data]').forEach(function (el) {
-    el.textContent = textoDoDia(el.dataset.data, el.hasAttribute('data-com-ano'));
+    var outroAno = el.dataset.data.slice(0, 4) !== anoHoje;
+    el.textContent = textoDoDia(el.dataset.data, el.hasAttribute('data-com-ano') || outroAno);
   });
 
   // 2. Tema
