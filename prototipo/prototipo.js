@@ -13,6 +13,8 @@
      da tela têm resposta.
   5. data-codigo-vai="pagina.html" num campo de código: avança sozinho no 6º número.
   6. Link com aria-disabled="true" não navega.
+  7. data-igual="texto" junto de data-precisa: o botão só liga quando o campo tem exatamente esse texto (a confirmação
+     de nível 3 da área do administrador: digitar o nome da coisa).
 */
 (function () {
   'use strict';
@@ -59,7 +61,12 @@
   document.querySelectorAll('[data-precisa]').forEach(function (botao) {
     var campo = document.getElementById(botao.dataset.precisa);
     if (!campo) return;
-    var conferir = function () { ligar(botao, campo.type === 'checkbox' ? campo.checked : campo.value.trim() !== ''); };
+    var igual = botao.dataset.igual;
+    var conferir = function () {
+      if (campo.type === 'checkbox') { ligar(botao, campo.checked); return; }
+      var valor = campo.value.trim();
+      ligar(botao, igual ? valor.toLowerCase() === igual.toLowerCase() : valor !== '');
+    };
     campo.addEventListener('input', conferir); campo.addEventListener('change', conferir); conferir();
   });
   document.querySelectorAll('[data-precisa-algum]').forEach(function (botao) {
